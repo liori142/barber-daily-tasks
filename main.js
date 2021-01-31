@@ -41,14 +41,16 @@ $(document).ready(function () {
             // Loop through and display
             $.each(taskList, function (key, value) {
                 let dateArr = value.task_date.split('-')
+                console.log(value.task)
                 $("#taskTableID").append(
                     "<tr id = '" + value.id + "'>" +
                     "<td>" + value.task + "</td>" +
                     "<td>" + value.task_priority + "</td>" +
-                    "<td>" + `${dateArr[2]}-${dateArr[1]}` + "</td>" +
+                    "<td class = 'text-center'>" + value.amount + "</td>" +
+                    "<td style = 'white-space: nowrap'>" + `${dateArr[2]}-${dateArr[1]}` + "</td>" +
                     "<td>" + arrayDays[new Date(value.task_date).getDay()] + "</td>" +
                     "<td>" + value.task_time + "</td>" +
-                    "<td class='float-right'> <a class = 'btn btn-dark ' href ='edit.html?id=" + value.id + "'>Edit</a>  <a href='#' class='btn btn-danger' id = 'remove-task' data-id='" + value.id + "'>Remove</a></td>" +
+                    "<td style = 'white-space: nowrap'> <a class = 'btn btn-dark ' href ='edit.html?id=" + value.id + "'>Edit</a>  <a href='#' class='btn btn-danger' id = 'remove-task' data-id='" + value.id + "'>Remove</a></td>" +
                     "</tr>");
             })
         }
@@ -76,12 +78,11 @@ $(document).ready(function () {
         // Add Unique ID
         let newDate = new Date();
         id = newDate.getTime();
-
-
         let task = $("#task").val();
         let task_priority = $("#priority").val();
         let task_date = $("#date").val();
         let task_time = $("#time").val();
+        let amount = $("#amountId").val();
 
         // Validation
         if (task == '') {
@@ -109,6 +110,7 @@ $(document).ready(function () {
                 "task_priority": task_priority,
                 "task_date": task_date,
                 "task_time": task_time,
+                "amount": amount,   
             }
 
             tasks.push(new_task);
@@ -120,11 +122,12 @@ $(document).ready(function () {
 
     // Function to update tasks
     function updateTask(e) {
-        var id = $('#task_id').val();
-        var task = $("#task").val();
-        var task_priority = $("#priority").val();
-        var task_date = $("#date").val();
-        var task_time = $("#time").val();
+        let id = $('#task_id').val();
+        let task = $("#task").val();
+        let task_priority = $("#priority").val();
+        let task_date = $("#date").val();
+        let task_time = $("#time").val();
+        let amount = $("#amountId").val();
 
 
         taskList = JSON.parse(localStorage.getItem('tasks'));
@@ -163,6 +166,8 @@ $(document).ready(function () {
                 "task_priority": task_priority,
                 "task_date": task_date,
                 "task_time": task_time,
+                "amount": amount,
+                
             }
 
             tasks.push(new_task);

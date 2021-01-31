@@ -13,11 +13,7 @@
                         <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded" id="navId">
        <img src="note2.png" width="60px" alt="">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-            <a class="nav-link" href="index.html">Daily Notes</a>
-            </li>
-        </ul>
+        
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
             <a class="nav-link mr-4" href="index.html">Home</a>
@@ -29,15 +25,17 @@
         </ul>
         </nav>
 
-        <div class="container">
-            <h2 class="page-header">My Daily Tasks</h2>
+        <div class="container overflow-auto">
+            <h2 class="page-header text-center m-3">My Tasks</h2>
             <table class="table table-striped" id="taskTableID">
                 <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Date</th>
-                    <th>Day</th>
-                    <th>Time</th>
+                    <th>שם</th>
+                    <th>סוג</th>
+                    <th>כמות</th>
+                    <th>תאריך</th>
+                    <th>יום</th>
+                    <th>שעה</th>
+                    <th></th>
                 </tr>
             </table>
             <a href="#" id="clearTasksID" class="btn btn-primary">Clear All Tasks</a>
